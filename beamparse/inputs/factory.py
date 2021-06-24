@@ -18,6 +18,18 @@ template_env = Environment(
 template_registry = {
     INPUTS.HOUSEHOLDS.value: "households.xml.j2",
     INPUTS.POPULATION.value: "population.xml.j2",
+    INPUTS.POPULATIONATTRIBUTES.value: "population_attributes.xml.j2",
+    INPUTS.HOUSEHOLDATTRIBUTES.value: "household_attributes.xml.j2",
+}
+
+DEFAULT_NS = "default"
+
+template_namespaces = {
+    INPUTS.HOUSEHOLDS.value: {
+        DEFAULT_NS: "http://www.matsim.org/files/dtd",
+        "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    },
+    INPUTS.POPULATION.value: {},
 }
 
 
@@ -37,4 +49,3 @@ class TemplateLoader:
     def render(self, output: str = None):
         document = self.template.render(**self.data)
         return document
-

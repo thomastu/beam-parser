@@ -3,7 +3,7 @@
 
 <population>
     {% for person in population -%}
-    <person>
+    <person id="{{person.id}}">
         {% if person.attributes -%}
         <attributes>
             {% for attribute in person.attributes -%}        
